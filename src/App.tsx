@@ -6,6 +6,7 @@ import {
     Typography,
     IconButton,
     Box,
+    Avatar,
 } from "@mui/material";
 import {
     CheckCircle,
@@ -31,8 +32,8 @@ const MoodTracker = () => {
                     minHeight: "100vh",
                     background: "linear-gradient(to bottom right, #ffc0cb, #4b0082)",
                     backgroundSize: "cover",
-                    position: "relative", // Needed for absolute positioning of children
-                    paddingBottom: "56px", // Add padding to prevent content from being hidden behind the fixed navbar
+                    position: "relative",
+                    paddingBottom: "56px",
                 }}
             >
                 {/* Scrollable content */}
@@ -57,13 +58,90 @@ const MoodTracker = () => {
                             marginTop: 2,
                         }}
                     >
-                        <Typography variant="h6" fontWeight="bold">
-                            RECENT MOODIIS
-                        </Typography>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                            }}
+                        >
+                            <Avatar
+                                sx={{
+                                    background: "linear-gradient(to right, #ff7e5f, #feb47b)",
+                                    marginRight: 1,
+                                }}
+                            >
+                                <SentimentSatisfied />
+                            </Avatar>
+                            <Typography variant="h6" fontWeight="bold">
+                                MOODIIS
+                            </Typography>
+                        </Box>
                     </Box>
 
-                    {/* Your main content would go here */}
+                    {/* Main Content */}
+                    <Card
+                        sx={{
+                            width: "100%",
+                            maxWidth: 400,
+                            height: 250,
+                            marginTop: 4,
+                            padding: 2,
+                            background: "linear-gradient(to right, #ff7e5f, #feb47b)",
+                            color: "white",
+                            borderRadius: 4,
+                            display: "flex",
+                            flexDirection: "column"
+                        }}
+                    >
+                        <CardContent>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "space-around",
+                                    alignItems: "center",
+                                    marginBottom: 2,
+                                }}
+                            >
+                                {["😢", "😐", "😲", "😄", "🤩"].map((emoji, index) => (
+                                    <Box
+                                        key={index}
+                                        onClick={() => console.log(`Clicked on ${emoji}`)}
+                                        sx={{
+                                            fontSize: "2rem",
+                                            cursor: "pointer",
+                                            transition: "transform 0.2s",
+                                            '&:hover': {
+                                                transform: "scale(1.2)",
+                                            },
+                                        }}
+                                    >
+                                        {emoji}
+                                    </Box>
+                                ))}
+                            </Box>
 
+                            <Typography>
+                                Möchtest du uns etwas mitteilen?
+                            </Typography>
+
+                            <Box sx={{ flexGrow: 1 }} />
+
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    marginTop: 2,
+                                }}
+                            >
+                                <Button variant="contained" color="error">
+                                    NEED HELP?
+                                </Button>
+                                <Button variant="contained" color="secondary">
+                                    SUBMIT
+                                </Button>
+                            </Box>
+                        </CardContent>
+                    </Card>
                 </Box>
 
                 {/* Bottom Nav Bar - Fixed at bottom */}
@@ -79,20 +157,20 @@ const MoodTracker = () => {
                         borderRadius: "16px 16px 0 0",
                         boxShadow: 3,
                         color: "white",
-                        position: "fixed", // This makes it stick to the bottom
-                        bottom: 0, // Positions it at the bottom
-                        left: 0, // Ensures it spans the full width
-                        zIndex: 1000, // Ensures it stays above other content
+                        position: "fixed",
+                        bottom: 0,
+                        left: 0,
+                        zIndex: 1000,
                     }}
                 >
                     <IconButton color="inherit" sx={{ padding: 1.5 }}>
-                        <SentimentSatisfied fontSize="medium" />
+                        <SentimentSatisfied fontSize="large" />
                     </IconButton>
                     <IconButton color="inherit" sx={{ padding: 1.5 }}>
-                        <Home fontSize="medium" />
+                        <Home fontSize="large" />
                     </IconButton>
                     <IconButton color="inherit" sx={{ padding: 1.5 }}>
-                        <Message fontSize="medium" />
+                        <Message fontSize="large" />
                     </IconButton>
                 </Box>
             </Box>
