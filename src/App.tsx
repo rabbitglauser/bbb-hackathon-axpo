@@ -90,10 +90,16 @@ const MoodTracker = () => {
                             color: "white",
                             borderRadius: 4,
                             display: "flex",
-                            flexDirection: "column"
+                            flexDirection: "column",
                         }}
                     >
-                        <CardContent>
+                        <CardContent
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                flexGrow: 1,
+                            }}
+                        >
                             <Box
                                 sx={{
                                     display: "flex",
@@ -133,10 +139,26 @@ const MoodTracker = () => {
                                     marginTop: 2,
                                 }}
                             >
-                                <Button variant="contained" color="error">
+                                <Button
+                                    variant="contained"
+                                    sx={{
+                                        backgroundColor: "#ff6f00",
+                                        '&:hover': {
+                                            backgroundColor: "#e65c00",
+                                        },
+                                    }}
+                                >
                                     NEED HELP?
                                 </Button>
-                                <Button variant="contained" color="secondary">
+                                <Button
+                                    variant="contained"
+                                    sx={{
+                                        backgroundColor: "#ff6f00",
+                                        '&:hover': {
+                                            backgroundColor: "#e65c00",
+                                        },
+                                    }}
+                                >
                                     SUBMIT
                                 </Button>
                             </Box>
